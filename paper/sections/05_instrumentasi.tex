@@ -1,0 +1,68 @@
+\section{Instrumentasi Spektrometer Raman}
+\label{sec:instrumentasi}
+
+\subsection{Arsitektur Spektrometer Mikro-Raman Konfokal}
+Untuk mengkarakterisasi nanomaterial berskala mikrometer seperti serpihan grafena dan berkas nanotube karbon, sistem spektrometer yang digunakan adalah spektrometer mikro-Raman konfokal (\textit{Confocal Micro-Raman Spectrometer}). Arsitektur ini mengintegrasikan mikroskop optik medan-terang dengan spektrograf kisi fokal panjang berresolusi tinggi \cite{smith2019modern}. Diagram blok konfigurasi instrumen disajikan pada Gambar \ref{fig:spectrometer_block}.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/tikz/fig_spectrometer_block.tikz}}
+\caption{Diagram blok jalur optik spektrometer mikro-Raman konfokal: penataan berkas eksitasi laser, pemisahan berkas menggunakan \textit{dichroic beam splitter}, pemfokusan mikroskopik 100x pada sampel, penolakan hamburan Rayleigh via \textit{edge filter}, pemilahan spasial konfokal via \textit{pinhole}, dispersi spektral oleh kisi difraksi $1800\text{ gr/mm}$, dan deteksi pada larik CCD berpendingin Peltier $-70^\circ\text{C}$.}
+\label{fig:spectrometer_block}
+\end{figure}
+
+Jalur berkas optik pada instrumen tersusun atas komponen-komponen kritis berikut:
+\begin{enumerate}
+    \item \textbf{Sumber Laser Eksitasi}: Laser monokromatik berfase koheren tipe \textit{Diode-Pumped Solid-State} (DPSS) dengan panjang gelombang emisi $\lambda_0 = 532.0\text{ nm}$ ($E_L = 2.3305\text{ eV}$). Berkas dilemahkan menggunakan filter densitas netral (\textit{Neutral Density Filter}, ND) untuk menjaga daya pada permukaan sampel pada rentang aman $0.5 - 2.0\text{ mW}$. Pembatasan daya ini krusial untuk mencegah pemanasan lokal (\textit{laser-induced local heating}) yang dapat menggeser posisi puncak fonon ke frekuensi lebih rendah akibat ekspansi kisi termal.
+    \item \textbf{Optik Pengarah dan Pemfokus}: Berkas laser diekspansi dan diarahkan melalui cermin pemisah berkas dikroik (\textit{dichroic beam splitter}) menuju lensa objektif mikroskopik Olympus BX41 berdaya perbesaran 100x dengan bukaan numerik tinggi (\textit{Numerical Aperture}, $\text{NA} = 0.90$). Diameter titik fokus difraksi (\textit{diffraction-limited laser spot size}) dihitung melalui kriteria Airy:
+    \begin{equation}
+    d_{\mathrm{spot}} \approx \frac{1.22 \lambda_0}{\mathrm{NA}} = \frac{1.22 \times 532\text{ nm}}{0.90} \approx 0.72\text{ }\mu\text{m}.
+    \label{eq:spot_size}
+    \end{equation}
+    Diameter berkas sub-mikrometer ini memungkinkan analisis spasial lokal pada batas butir, tepi defek, atau area transfer heterostruktur secara presisi.
+    \item \textbf{Geometri Pengumpulan Hamburan}: Pengumpulan sinyal hamburan dilakukan dalam geometri hamburan balik $180^\circ$ (\textit{backscattering geometry}, $\mathbf{k}_s \approx -\mathbf{k}_0$) menggunakan lensa objektif mikroskop yang sama, memaksimalkan efisiensi penangkapan foton terhambur.
+    \item \textbf{Filter Penolak Hamburan Elastik Rayleigh}: Sinyal yang dikumpulkan terdiri atas hamburan elastik Rayleigh yang sangat kuat dan sinyal hamburan inelastik Raman yang lemah (rasio intensitas $\sim 10^{-6} - 10^{-8}$). Untuk mencegah saturasi detektor CCD dan pancaran cahaya sesatan (\textit{stray light}), digunakan \textit{dielectric edge filter} bertingkat tinggi dengan kerapatan optik (\textit{Optical Density}) $\text{OD} > 6$ pada $532\text{ nm}$. Filter ini menolak garis laser Rayleigh hingga faktor $10^6$ dan meloloskan foton Stokes dengan tepi cut-off tajam pada $\approx 50\text{ cm}^{-1}$.
+    \item \textbf{Celah Konfokal (\textit{Confocal Pinhole})}: Aperture celah konfokal berdiameter $50 - 100\text{ }\mu\text{m}$ diletakkan pada bidang fokal konjugat detektor. Pinhole ini memblokir berkas cahaya di luar bidang fokus (\textit{out-of-focus light}), menghasilkan resolusi kedalaman aksial tinggi ($\Delta z \le 1.5\text{ }\mu\text{m}$) yang mengeliminasi sinyal latar belakang luminesensi dari substrat tebal.
+    \item \textbf{Spektrograf Czerny--Turner dan Kisi Difraksi}: Berkas Raman difokuskan ke celah masuk spektrograf Czerny--Turner fokal panjang ($f = 800\text{ mm}$), dipantulkan oleh cermin kolimator menuju kisi difraksi refleksi holografik bertakik $1800\text{ grooves/mm}$.
+    \item \textbf{Detektor Larik CCD}: Spektrum yang terdispersi diproyeksikan ke sensor kamera \textit{Charge-Coupled Device} (CCD) Synapse dengan format matriks $1024 \times 256$ piksel. Sensor didinginkan secara termoelektrik (Peltier) hingga temperatur $-70^\circ\text{C}$ untuk menekan arus gelap hingga $< 0.002\text{ e}^-/\text{piksel/detik}$.
+\end{enumerate}
+
+\subsection{Persamaan Kisi Difraksi dan Resolusi Spektral}
+Dispersi spasial foton hamburan terhadap panjang gelombang diatur oleh persamaan difraksi kisi:
+\begin{equation}
+m \lambda = d (\sin \theta_i + \sin \theta_d),
+\label{eq:persamaan_kisi}
+\end{equation}
+dengan $m$ menyatakan orde difraksi ($m = 1$ untuk moda standar), $d = 10^6 / 1800 \approx 555.56\text{ nm}$ adalah jarak antar-alur kisi, $\theta_i$ adalah sudut datang berkas terhadap garis normal kisi, dan $\theta_d$ adalah sudut difraksi berkas terhambur.
+
+Dispersi sudut kisi difraksi diberikan oleh turunan sudut difraksi terhadap panjang gelombang:
+\begin{equation}
+D_{\theta} = \frac{d\theta_d}{d\lambda} = \frac{m}{d \cos \theta_d}.
+\label{eq:dispersi_sudut}
+\end{equation}
+
+Dispersi linier pada bidang fokal detektor CCD dengan panjang fokal spektrograf $f = 800\text{ mm}$ bernilai:
+\begin{equation}
+\frac{dx}{d\lambda} = f \frac{d\theta_d}{d\lambda} = \frac{f \cdot m}{d \cos \theta_d}.
+\label{eq:dispersi_linier}
+\end{equation}
+
+Untuk detektor dengan lebar fisik piksel $w_{\mathrm{pix}} = 26\text{ }\mu\text{m}$, dispersi timbal-balik per piksel pada daerah spektrum $\lambda \approx 580\text{ nm}$ ($\Delta\tilde{\nu} \approx 1580\text{ cm}^{-1}$) adalah:
+\begin{equation}
+\delta\lambda_{\mathrm{pix}} = \frac{w_{\mathrm{pix}}}{dx/d\lambda} \approx 0.016\text{ nm/pixel}.
+\end{equation}
+
+Dinyatakan dalam bilangan gelombang, resolusi pergeseran Raman per piksel diberikan oleh diferensiasi $\Delta\tilde{\nu} = 10^7 (1/\lambda_0 - 1/\lambda_s)$:
+\begin{equation}
+\delta\tilde{\nu} = \frac{10^7}{\lambda_s^2} \delta\lambda \approx \frac{10^7}{(580\text{ nm})^2} (0.016\text{ nm}) \approx 0.47\text{ cm}^{-1}/\text{pixel}.
+\label{eq:resolusi_spektral}
+\end{equation}
+Resolusi instrumen $\le 0.5\text{ cm}^{-1}$ ini sangat memadai untuk memisahkan dekonvolusi komponen sub-pita yang memiliki selisih pergeseran beberapa $\text{cm}^{-1}$.
+
+\subsection{Kalibrasi Bilangan Gelombang dan Verifikasi Stabilitas}
+Akurasi posisi bilangan gelombang dijamin melalui kalibrasi standar menggunakan fonon optik kisi kristal tunggal Silikon monokristalin $\text{Si}(100)$ pada orientasi normal. Mode fonon optik $F_{2g}$ silikon memiliki frekuensi acuan internasional yang terstandarisasi:
+\begin{equation}
+\Delta\tilde{\nu}_{\mathrm{Si}} = 520.70 \pm 0.05\text{ cm}^{-1}.
+\label{eq:kalibrasi_silikon}
+\end{equation}
+Penyimpangan posisi puncak silikon dikoreksi melalui kalibrasi offset motorik kisi monokromator sebelum pengambilan data spektral, menjamin akurasi absolut pergeseran Raman lebih baik dari $\pm 0.2\text{ cm}^{-1}$.

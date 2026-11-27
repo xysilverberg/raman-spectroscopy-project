@@ -1,0 +1,56 @@
+[
+  {
+    "MAE": 53.50291984422909,
+    "RMSE": 143.6135863227514,
+    "R2": 0.9523723642337968,
+    "Pearson_r": 0.9762696035150592,
+    "sample_name": "Pristine SLG",
+    "max_intensity_exp": 8096.403063953487,
+    "scale_factor": 0.9202609502396097
+  },
+  {
+    "MAE": 59.274388940593624,
+    "RMSE": 134.1055753608354,
+    "R2": 0.9193969154467926,
+    "Pearson_r": 0.9686440156527312,
+    "sample_name": "Bilayer Graphene (BLG)",
+    "max_intensity_exp": 3848.171598729714,
+    "scale_factor": 0.9474656545879927
+  },
+  {
+    "MAE": 50.98459358770306,
+    "RMSE": 88.20344469266774,
+    "R2": 0.955741351725397,
+    "Pearson_r": 0.9780525144045691,
+    "sample_name": "Defective Graphene",
+    "max_intensity_exp": 3643.283515744381,
+    "scale_factor": 0.866743439259498
+  },
+  {
+    "MAE": 106.3197749863284,
+    "RMSE": 171.8939938791439,
+    "R2": 0.7697327478103655,
+    "Pearson_r": 0.9310278539315163,
+    "sample_name": "Metallic SWCNT",
+    "max_intensity_exp": 4483.34699481914,
+    "scale_factor": 0.9877791246885201
+  },
+  {
+    "MAE": 45.734028663414904,
+    "RMSE": 154.7503239523166,
+    "R2": 0.7586399121726608,
+    "Pearson_r": 0.883860834396467,
+    "sample_name": "Semiconducting SWCNT",
+    "max_intensity_exp": 3888.874156493953,
+    "scale_factor": 0.967875743474779
+  },
+  {
+    "MAE": 49.476710338366416,
+    "RMSE": 150.6128167551192,
+    "R2": 0.9474918681004094,
+    "Pearson_r": 0.9737345772241442,
+    "sample_name": "Graphene/h-BN Heterostructure",
+    "max_intensity_exp": 9444.062357702143,
+    "scale_factor": 0.9570062007021334
+  }
+]

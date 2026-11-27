@@ -1,0 +1,167 @@
+\section{Dasar Teori Hamburan dan Spektroskopi Raman}
+\label{sec:dasar_raman}
+
+\subsection{Pendekatan Klasik Momen Dipol Terinduksi}
+Ketika suatu molekul atau kristal ditempatkan dalam medan listrik radiasi elektromagnetik monokromatik $\mathbf{E}(t)$, awan elektron mengalami pergeseran relatif terhadap inti atom positif. Pergeseran muatan ini menghasilkan momen dipol listrik terinduksi $\mathbf{p}_{\mathrm{ind}}(t)$ yang secara umum dihubungkan dengan medan listrik melalui tensor polarizabilitas $\boldsymbol{\alpha}$ \cite{long2002raman}:
+\begin{equation}
+\mathbf{p}_{\mathrm{ind}}(t) = \boldsymbol{\alpha}(t) \mathbf{E}(t).
+\label{eq:dipol_tensor}
+\end{equation}
+
+Untuk pendekatan satu dimensi, hubungan tersebut dapat dituliskan dalam bentuk skalar:
+\begin{equation}
+p_{\mathrm{ind}}(t) = \alpha(t) E(t).
+\label{eq:dipol_skalar}
+\end{equation}
+
+Medan listrik laser datang berosilasi dengan frekuensi sudut $\omega_0$ dan amplitudo $E_0$:
+\begin{equation}
+E(t) = E_0 \cos(\omega_0 t).
+\label{eq:medan_laser}
+\end{equation}
+
+Ketika molekul bervibrasi di sekitar posisi kesetimbangannya sepanjang koordinat normal vibrasi $Q$, polarizabilitas molekul termodulasi oleh pergeseran inti atom tersebut. Untuk simpangan vibrasi yang relatif kecil, polarizabilitas dapat diekspansikan dalam deret Taylor di sekitar posisi kesetimbangan $Q = 0$:
+\begin{equation}
+\alpha(Q) = \alpha_0 + \left(\frac{\partial \alpha}{\partial Q}\right)_0 Q + \frac{1}{2}\left(\frac{\partial^2 \alpha}{\partial Q^2}\right)_0 Q^2 + \dots
+\label{eq:taylor_polarizabilitas}
+\end{equation}
+dengan $\alpha_0$ menyatakan polarizabilitas molekul pada geometri kesetimbangan, dan $(\partial \alpha/\partial Q)_0$ merupakan laju perubahan polarizabilitas terhadap perpindahan koordinat normal pada posisi kesetimbangan.
+
+Dalam pendekatan osilator harmonik sederhana, perpindahan koordinat normal berosilasi dengan frekuensi vibrasi $\omega_v$ dan amplitudo $Q_0$:
+\begin{equation}
+Q(t) = Q_0 \cos(\omega_v t).
+\label{eq:koordinat_normal}
+\end{equation}
+
+Dengan mengabaikan suku non-linear orde tinggi ($Q^2$ dan seterusnya) untuk kasus hamburan Raman fundamental orde pertama, substitusi Persamaan \eqref{eq:taylor_polarizabilitas} dan \eqref{eq:koordinat_normal} ke dalam Persamaan \eqref{eq:dipol_skalar} menghasilkan:
+\begin{equation}
+p_{\mathrm{ind}}(t) = \left[ \alpha_0 + \left(\frac{\partial \alpha}{\partial Q}\right)_0 Q_0 \cos(\omega_v t) \right] E_0 \cos(\omega_0 t).
+\label{eq:substitusi_dipol}
+\end{equation}
+
+Dengan menerapkan identitas trigonometri perkalian kosinus:
+\begin{equation}
+\cos A \cos B = \frac{1}{2} \left[ \cos(A + B) + \cos(A - B) \right],
+\end{equation}
+maka momen dipol terinduksi total terurai secara eksak menjadi tiga komponen harmonik terpisah:
+\begin{equation}
+\begin{aligned}
+p_{\mathrm{ind}}(t) ={}& \alpha_0 E_0 \cos(\omega_0 t) \\
+& + \frac{1}{2} \left(\frac{\partial \alpha}{\partial Q}\right)_0 Q_0 E_0 \cos[(\omega_0 - \omega_v)t] \\
+& + \frac{1}{2} \left(\frac{\partial \alpha}{\partial Q}\right)_0 Q_0 E_0 \cos[(\omega_0 + \omega_v)t].
+\end{aligned}
+\label{eq:komponen_raman}
+\end{equation}
+
+Berdasarkan elektrodinamika klasik, dipol berosilasi memancarkan radiasi elektromagnetik sekunder dengan daya yang sebanding dengan kuadrat turunan kedua momen dipol terhadap waktu, $\mathcal{P} \propto \langle (\ddot{p}_{\mathrm{ind}})^2 \rangle \propto \omega^4 |p_0|^2$. Dari Persamaan \eqref{eq:komponen_raman}, radiasi yang dipancarkan terdiri atas tiga pita frekuensi yang memiliki makna fisis fundamental:
+\begin{enumerate}
+    \item \textbf{Hamburan Rayleigh}: Komponen berosilasi pada frekuensi sudut $\omega_0$ dengan amplitudo sebanding dengan $\alpha_0$. Radiasi ini memiliki frekuensi identik dengan foton laser datang dan merepresentasikan hamburan elastik tanpa pertukaran energi dengan kisi molekul.
+    \item \textbf{Hamburan Raman Stokes}: Komponen berosilasi pada frekuensi sudut tergeser ke bawah, $\omega_S = \omega_0 - \omega_v$. Molekul menyerap energi sebesar $\hbar\omega_v$ dari foton laser dan bertransisi ke keadaan vibrasi tereksitasi.
+    \item \textbf{Hamburan Raman Anti-Stokes}: Komponen berosilasi pada frekuensi sudut tergeser ke atas, $\omega_{AS} = \omega_0 + \omega_v$. Molekul yang telah berada pada keadaan tereksitasi melepaskan energi vibrasi $\hbar\omega_v$ kepada foton terhambur dan kembali ke tingkat dasar.
+\end{enumerate}
+
+Konsekuensi langsung dari Persamaan \eqref{eq:komponen_raman} adalah syarat keaktifan Raman klasik: suatu mode vibrasi molekular hanya dapat aktif Raman apabila vibrasi tersebut menghasilkan perubahan polarizabilitas neto pada posisi kesetimbangan:
+\begin{equation}
+\left(\frac{\partial \alpha}{\partial Q}\right)_0 \neq 0.
+\label{eq:syarat_keaktifan_raman}
+\end{equation}
+Jika $(\partial \alpha/\partial Q)_0 = 0$, suku Stokes dan anti-Stokes bernilai nol secara identik, sehingga molekul hanya memancarkan hamburan elastik Rayleigh.
+
+\subsection{Definisi Pergeseran Raman dalam Bilangan Gelombang}
+Dalam eksperimen spektroskopi optik, posisi spektrum dinyatakan dalam satuan bilangan gelombang ($\tilde{\nu}$) berdimensi $\text{cm}^{-1}$, yang terdefinisi sebagai kebalikan dari panjang gelombang vakum:
+\begin{equation}
+\tilde{\nu}_0 = \frac{1}{\lambda_0}, \qquad \tilde{\nu}_s = \frac{1}{\lambda_s}.
+\label{eq:bilangan_gelombang}
+\end{equation}
+Jika panjang gelombang laser $\lambda_0$ dan foton hamburan $\lambda_s$ dinyatakan dalam satuan nanometer ($\text{nm}$), konversi bilangan gelombang dalam satuan $\text{cm}^{-1}$ dihitung melalui:
+\begin{equation}
+\tilde{\nu} \, (\text{cm}^{-1}) = \frac{10^7}{\lambda \, (\text{nm})}.
+\end{equation}
+
+Pergeseran Raman (\textit{Raman shift}) Stokes didefinisikan sebagai selisih bilangan gelombang foton laser datang terhadap foton terhambur:
+\begin{equation}
+\Delta \tilde{\nu}_S = \tilde{\nu}_0 - \tilde{\nu}_s = 10^7 \left( \frac{1}{\lambda_0} - \frac{1}{\lambda_s} \right).
+\label{eq:pergeseran_stokes}
+\end{equation}
+Sebaliknya, untuk garis anti-Stokes:
+\begin{equation}
+\Delta \tilde{\nu}_{AS} = \tilde{\nu}_s - \tilde{\nu}_0 = 10^7 \left( \frac{1}{\lambda_s} - \frac{1}{\lambda_0} \right).
+\label{eq:pergeseran_antistokes}
+\end{equation}
+Pergeseran Raman merupakan besaran intrinsik yang mencerminkan kuantisasi energi fonon kisi molekul ($\Delta E = h c \Delta \tilde{\nu}$), sehingga nilainya independen dari panjang gelombang laser eksitasi yang digunakan pada spektrometer.
+
+\subsection{Pendekatan Kuantum Osilator Harmonik}
+Dalam mekanika kuantum, keadaan vibrasi molekul diuraikan melalui perlakuan osilator harmonik kuantum satu dimensi. Hamiltonian vibrasi didefinisikan sebagai:
+\begin{equation}
+\hat{H}_v = \frac{\hat{P}^2}{2\mu} + \frac{1}{2} k \hat{Q}^2 = \frac{\hat{P}^2}{2\mu} + \frac{1}{2} \mu \omega_v^2 \hat{Q}^2,
+\label{eq:hamiltonian_harmonik}
+\end{equation}
+dengan $\mu$ menyatakan massa tereduksi osilator, $k$ adalah konstanta pegas ikatan, dan frekuensi sudut vibrasi alami diberikan oleh $\omega_v = \sqrt{k/\mu}$. Tingkat-tingkat energi vibrasi terkuantisasi menurut:
+\begin{equation}
+E_v = \hbar \omega_v \left( v + \frac{1}{2} \right), \qquad v = 0, 1, 2, \dots
+\label{eq:tingkat_energi}
+\end{equation}
+
+Operator koordinat normal $\hat{Q}$ dan momentum konjugat $\hat{P}$ dapat dinyatakan dalam operator tangga penciptaan $\hat{a}^\dagger$ dan pemusnahan $\hat{a}$:
+\begin{equation}
+\hat{Q} = \sqrt{\frac{\hbar}{2\mu\omega_v}} \left( \hat{a} + \hat{a}^\dagger \right), \qquad
+\hat{P} = -i \sqrt{\frac{\hbar\mu\omega_v}{2}} \left( \hat{a} - \hat{a}^\dagger \right),
+\label{eq:operator_tangga}
+\end{equation}
+dengan relasi komutasi standar $[\hat{a}, \hat{a}^\dagger] = 1$. Aksi operator tangga pada keadaan eigen vibrasi $|v\rangle$ memenuhi:
+\begin{equation}
+\hat{a}|v\rangle = \sqrt{v} |v - 1\rangle, \qquad \hat{a}^\dagger |v\rangle = \sqrt{v + 1} |v + 1\rangle.
+\end{equation}
+
+Elemen matriks transisi transisional operator koordinat $\langle v' | \hat{Q} | v \rangle$ bernilai:
+\begin{equation}
+\langle v' | \hat{Q} | v \rangle = \sqrt{\frac{\hbar}{2\mu\omega_v}} \left[ \sqrt{v} \, \delta_{v', v - 1} + \sqrt{v + 1} \, \delta_{v', v + 1} \right].
+\label{eq:elemen_matriks_koordinat}
+\end{equation}
+
+Dalam teori polarizabilitas terinduksi kuantum, intensitas hamburan Raman untuk transisi dari keadaan vibrasi awal $|v\rangle$ menuju keadaan akhir $|v'\rangle$ ditentukan oleh elemen matriks polarizabilitas transisional $[\alpha_{ij}]_{v'v} = \langle v' | \hat{\alpha}_{ij} | v \rangle$. Dengan mengekspansikan operator polarizabilitas terhadap $\hat{Q}$:
+\begin{equation}
+\hat{\alpha}_{ij} = \alpha_{ij}^{(0)} \hat{\mathbb{I}} + \left( \frac{\partial \alpha_{ij}}{\partial Q} \right)_0 \hat{Q} + \dots
+\end{equation}
+maka elemen matriks polarizabilitas transisional tereduksi menjadi:
+\begin{equation}
+\langle v' | \hat{\alpha}_{ij} | v \rangle = \alpha_{ij}^{(0)} \delta_{v', v} + \left( \frac{\partial \alpha_{ij}}{\partial Q} \right)_0 \langle v' | \hat{Q} | v \rangle.
+\label{eq:matriks_transisi_polarizabilitas}
+\end{equation}
+
+Suku pertama pada Persamaan \eqref{eq:matriks_transisi_polarizabilitas} mengharuskan $v' = v$ ($\Delta v = 0$), yang menghasilkan hamburan elastik Rayleigh. Suku kedua sebanding dengan elemen matriks koordinat Persamaan \eqref{eq:elemen_matriks_koordinat}, yang memberikan kaidah seleksi transisi vibrasi fundamental osilator harmonik:
+\begin{equation}
+\Delta v = v' - v = \pm 1.
+\label{eq:kaidah_seleksi_vibrasi}
+\end{equation}
+Transisi $\Delta v = +1$ merepresentasikan proses Stokes ($|0\rangle \to |1\rangle$), sedangkan transisi $\Delta v = -1$ merepresentasikan proses anti-Stokes ($|1\rangle \to |0\rangle$).
+
+\subsection{Distribusi Termal Boltzmann dan Rasio Intensitas Stokes/Anti-Stokes}
+Probabilitas keterisian termal pada tingkat energi vibrasi $v$ pada temperatur kesetimbangan $T$ ditentukan oleh faktor distribusi Boltzmann:
+\begin{equation}
+N_v = \frac{N_0}{Z} \exp\left( - \frac{E_v}{k_B T} \right) = \frac{N_0}{Z} \exp\left[ - \frac{\hbar\omega_v (v + 1/2)}{k_B T} \right],
+\label{eq:boltzmann}
+\end{equation}
+dengan $Z = \sum_v \exp(-E_v/k_B T) = [2\sinh(\hbar\omega_v / 2k_B T)]^{-1}$ adalah fungsi partisi vibrasi.
+
+Populasi relatif pada keadaan vibrasi tereksitasi pertama ($v=1$) terhadap keadaan dasar ($v=0$) diberikan oleh rasio:
+\begin{equation}
+\frac{N_1}{N_0} = \exp\left( - \frac{\hbar\omega_v}{k_B T} \right) = \exp\left( - \frac{h c \Delta\tilde{\nu}}{k_B T} \right).
+\label{eq:rasio_populasi}
+\end{equation}
+
+Karena transisi Stokes berasal dari keadaan dasar $v=0$ sedangkan transisi anti-Stokes berawal dari keadaan tereksitasi $v=1$, intensitas terhambur masing-masing sebanding dengan populasi awal dikalikan faktor frekuensi radiasi kuartik $\omega^4$:
+\begin{equation}
+I_S \propto N_0 \, (\omega_0 - \omega_v)^4 |\langle 1 | \hat{Q} | 0 \rangle|^2 \propto N_0 \, (\omega_0 - \omega_v)^4 \left( \frac{\hbar}{2\mu\omega_v} \right),
+\end{equation}
+\begin{equation}
+I_{AS} \propto N_1 \, (\omega_0 + \omega_v)^4 |\langle 0 | \hat{Q} | 1 \rangle|^2 \propto N_1 \, (\omega_0 + \omega_v)^4 \left( \frac{\hbar}{2\mu\omega_v} \right).
+\end{equation}
+
+Dengan demikian, rasio intensitas garis anti-Stokes terhadap garis Stokes dinyatakan secara analitik sebagai:
+\begin{equation}
+\frac{I_{AS}}{I_S} = \left( \frac{\omega_0 + \omega_v}{\omega_0 - \omega_v} \right)^4 \exp\left( - \frac{\hbar\omega_v}{k_B T} \right) = \left( \frac{\tilde{\nu}_0 + \Delta\tilde{\nu}}{\tilde{\nu}_0 - \Delta\tilde{\nu}} \right)^4 \exp\left( - \frac{h c \Delta\tilde{\nu}}{k_B T} \right).
+\label{eq:rasio_as_s}
+\end{equation}
+
+Pada temperatur ruang ($T \approx 300\text{ K}$) dengan eksitasi laser hijau $\lambda_0 = 532\text{ nm}$ ($\tilde{\nu}_0 = 18797\text{ cm}^{-1}$), untuk mode fonon optik grafena pita $G$ ($\Delta\tilde{\nu} \approx 1582\text{ cm}^{-1}$), energi fonon bernilai $h c \Delta\tilde{\nu} \approx 0.196\text{ eV} \gg k_B T \approx 0.0259\text{ eV}$. Eksponensial Boltzmann menghasilkan $\exp(-7.57) \approx 5.15 \times 10^{-4}$. Meskipun faktor frekuensi kuartik bernilai $[(18797 + 1582)/(18797 - 1582)]^4 \approx (20379 / 17215)^4 \approx 1.96$, rasio intensitas total anti-Stokes terhadap Stokes tetap sangat kecil ($I_{AS}/I_S \approx 1.01 \times 10^{-3}$). Hal ini menjelaskan secara fisis mengapa spektrum Raman eksperimental pada umumnya diukur pada kuadran hamburan Stokes.

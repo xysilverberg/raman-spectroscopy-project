@@ -1,0 +1,146 @@
+\section{Kaidah Seleksi Raman dan Teori Grup Molekular}
+\label{sec:kaidah_seleksi}
+
+\subsection{Kaidah Seleksi Vibrasi dan Tensor Polarizabilitas}
+Dalam kristal atau molekul poliatomik dengan $N$ atom, terdapat $3N - 6$ derajat kebebasan vibrasi normal (atau $3N - 5$ untuk molekul linear). Setiap mode normal $k$ memiliki koordinat normal $Q_k$ yang berosilasi secara independen dalam pendekatan harmonik.
+
+Tensor polarizabilitas $\boldsymbol{\alpha}$ merupakan kuadrisimetris orde dua ($3 \times 3$) yang menghubungkan komponen vektor medan listrik $E_j$ dengan komponen momen dipol listrik terinduksi $p_i$:
+\begin{equation}
+\begin{pmatrix} p_x \\ p_y \\ p_z \end{pmatrix}_{\mathrm{ind}} =
+\begin{pmatrix}
+\alpha_{xx} & \alpha_{xy} & \alpha_{xz} \\
+\alpha_{yx} & \alpha_{yy} & \alpha_{yz} \\
+\alpha_{zx} & \alpha_{zy} & \alpha_{zz}
+\end{pmatrix}
+\begin{pmatrix} E_x \\ E_y \\ E_z \end{pmatrix}.
+\label{eq:tensor_matrix}
+\end{equation}
+Pada kondisi di luar resonansi optik, tensor polarizabilitas bersifat simetris ($\alpha_{ij} = \alpha_{ji}$), sehingga hanya memiliki 6 komponen independen ($\alpha_{xx}, \alpha_{yy}, \alpha_{zz}, \alpha_{xy}, \alpha_{xz}, \alpha_{yz}$).
+
+Ekspansi komponen tensor $\alpha_{ij}$ terhadap seluruh koordinat normal $Q_k$ di sekitar kesetimbangan menghasilkan:
+\begin{equation}
+\alpha_{ij}(Q) = \alpha_{ij}^{(0)} + \sum_{k=1}^{3N-6} \left( \frac{\partial \alpha_{ij}}{\partial Q_k} \right)_0 Q_k + \dots
+\end{equation}
+
+Suatu mode vibrasi $k$ aktif Raman jika dan hanya jika sekurang-kurangnya satu komponen tensor polarizabilitas memiliki turunan tak-nol terhadap koordinat normal mode tersebut:
+\begin{equation}
+\exists \, i, j \in \{x, y, z\} \quad \text{sehingga} \quad \left( \frac{\partial \alpha_{ij}}{\partial Q_k} \right)_0 \neq 0.
+\label{eq:syarat_tensor_raman}
+\end{equation}
+
+Dalam kerangka mekanika kuantum, integral transisi polarizabilitas antara keadaan vibrasi dasar $\psi_0(Q_k)$ dan tereksitasi $\psi_1(Q_k)$ diberikan oleh:
+\begin{equation}
+[\alpha_{ij}]_{10} = \int_{-\infty}^{\infty} \psi_1^*(Q_k) \, \alpha_{ij}(Q_k) \, \psi_0(Q_k) \, dQ_k.
+\label{eq:integral_transisi}
+\end{equation}
+Agar $[\alpha_{ij}]_{10}$ tidak bernilai nol, perkalian langsung representasi irreducibel dari integran harus memuat representasi identitas total simetris $\Gamma_{\mathrm{tot}}$:
+\begin{equation}
+\Gamma(\psi_1) \otimes \Gamma(\alpha_{ij}) \otimes \Gamma(\psi_0) \supset \Gamma_1 \quad (\text{atau } A_{1g}, A_1).
+\label{eq:teori_grup_integral}
+\end{equation}
+Karena keadaan dasar $\psi_0$ selalu bertransformasi sebagai representasi total simetris ($\Gamma(\psi_0) = \Gamma_1$), dan untuk keadaan tereksitasi pertama $\Gamma(\psi_1) = \Gamma(Q_k)$, maka syarat keaktifan Raman tereduksi menjadi:
+\begin{equation}
+\Gamma(Q_k) \cap \Gamma(\alpha_{ij}) \neq \emptyset.
+\label{eq:syarat_simetri_raman}
+\end{equation}
+Dengan kata lain, mode normal vibrasi $Q_k$ aktif Raman jika dan hanya jika representasi irreducibel dari mode tersebut bertransformasi seperti salah satu komponen kuadratik koordinat kartesian ($x^2, y^2, z^2, xy, xz, yz$) yang merupakan basis fungsi bagi tensor polarizabilitas. Sebaliknya, mode aktif inframerah memerlukan $\Gamma(Q_k) \cap \Gamma(\mu_i) \neq \emptyset$, yaitu bertransformasi seperti komponen vektor dipol ($x, y, z$).
+
+\subsection{Kaidah Seleksi Rotasi Murni}
+Untuk hamburan Raman rotasi molekul gas linear (misalnya $\text{N}_2$, $\text{CO}_2$), polarizabilitas anisotropik molekul termodulasi dua kali dalam satu putaran penuh ($360^\circ$) karena elipsoid polarizabilitas memiliki simetri inversi. Hal ini menghasilkan kaidah seleksi rotasi:
+\begin{equation}
+\Delta J = 0, \pm 2,
+\label{eq:kaidah_rotasi}
+\end{equation}
+dengan $J$ menyatakan bilangan kuantum momentum sudut rotasi molekul.
+
+Pergeseran energi rotasi rotor kaku dengan konstanta rotasi $B = \hbar / (4\pi c I)$ diberikan oleh $E(J) = h c B J(J + 1)$. Transisi rotasi menghasilkan deret garis spektral:
+\begin{enumerate}
+    \item \textbf{Cabang Q} ($\Delta J = 0$): garis tak-tergeser yang berimpit dengan garis Rayleigh sentral.
+    \item \textbf{Cabang S} ($\Delta J = +2$): garis Stokes tergeser ke bawah dengan pergeseran energi:
+    \begin{equation}
+    \Delta \tilde{\nu}_S(J) = E(J+2) - E(J) = B [(J+2)(J+3) - J(J+1)] = B (4J + 6), \quad J = 0, 1, 2, \dots
+    \end{equation}
+    Jarak antara garis-garis rotasi pada cabang S adalah $\Delta(\Delta\tilde{\nu}) = 4B$, dengan garis pertama muncul pada $6B$ dari garis Rayleigh.
+    \item \textbf{Cabang O} ($\Delta J = -2$): garis anti-Stokes yang bersesuaian dengan de-eksitasi rotasi.
+\end{enumerate}
+
+\subsection{Analisis Teori Grup: Molekul Linear Sentrosimetrik $\text{CO}_2$}
+Molekul karbon dioksida ($\text{O=C=O}$) merupakan molekul linear dengan grup titik $D_{\infty h}$. Molekul memiliki pusat inversi ($i$) yang membagi atom oksigen secara simetris terhadap atom karbon pusat. Jumlah mode normal adalah $3(3) - 5 = 4$ mode.
+
+Tabel karakter grup titik $D_{\infty h}$ menetapkan transformasi komponen dipol dan polarizabilitas sebagai berikut:
+\begin{itemize}
+    \item Komponen translasi / dipol: $z \to \Sigma_u^+$, $(x, y) \to \Pi_u$.
+    \item Komponen polarizabilitas kuadratik: $x^2 + y^2, z^2 \to \Sigma_g^+$, $(xz, yz) \to \Pi_g$, $(x^2 - y^2, xy) \to \Delta_g$.
+\end{itemize}
+
+Empat mode normal vibrasi $\text{CO}_2$ terurai menjadi:
+\begin{enumerate}
+    \item $\nu_1$ (\textit{Symmetric Stretching}, $\sim 1388\text{ cm}^{-1}$): simetri $\Sigma_g^+$. Pada mode ini, atom karbon diam sementara kedua atom oksigen bergerak menjauhi/mendekati pusat secara serempak. Momen dipol listrik tetap nol sepanjang osilasi ($\partial \mu/\partial Q_1 = 0$), namun volume dan elipsoid polarizabilitas mengembang dan mengempis secara periodik ($(\partial \alpha/\partial Q_1)_0 \neq 0$). Karena $\Sigma_g^+$ merupakan basis fungsi $x^2 + y^2$ dan $z^2$, mode ini \textbf{aktif Raman dan inaktif IR}.
+    \item $\nu_2$ (\textit{Bending}, terdegenerasi rangkap dua, $\sim 667\text{ cm}^{-1}$): simetri $\Pi_u$. Vibrasi pembengkokan pada bidang $xz$ dan $yz$. Menghasilkan momen dipol transien tegak lurus sumbu molekul, namun polarizabilitas memiliki nilai ekstrem simetris pada simpangan $+Q$ dan $-Q$ sehingga turunan pertamanya nol. Karena bertransformasi sebagai $(x, y)$, mode ini \textbf{aktif IR dan inaktif Raman}.
+    \item $\nu_3$ (\textit{Asymmetric Stretching}, $\sim 2349\text{ cm}^{-1}$): simetri $\Sigma_u^+$. Atom karbon bergerak berlawanan arah dengan kedua atom oksigen. Menghasilkan osilasi momen dipol sepanjang sumbu $z$, namun polarizabilitas tidak mengalami perubahan netto orde pertama. Karena bertransformasi sebagai $z$, mode ini \textbf{aktif IR dan inaktif Raman}.
+\end{enumerate}
+
+\begin{table}[htbp]
+\centering
+\caption{Karakteristik Mode Vibrasi Normal Molekul Linear $\text{CO}_2$ ($D_{\infty h}$).}
+\label{tab:co2_modes}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
+\hline
+\textbf{Mode Vibrasi} & \textbf{Simetri} & \textbf{Frekuensi ($\text{cm}^{-1}$)} & \textbf{Aktivitas IR} & \textbf{Aktivitas Raman} & \textbf{Deskripsi Gerak} \\
+\hline
+$\nu_1$ (Regangan Simetris) & $\Sigma_g^+$ & 1388 (Fermi doublet: 1285, 1388) & Tidak Aktif & \textbf{Aktif} & $\text{O} \leftarrow \text{C} \rightarrow \text{O}$ \\
+$\nu_2$ (Tekukan Terdegenerasi) & $\Pi_u$ & 667 & \textbf{Aktif} & Tidak Aktif & Pembengkokan bidang \\
+$\nu_3$ (Regangan Asimetris) & $\Sigma_u^+$ & 2349 & \textbf{Aktif} & Tidak Aktif & $\text{O} \rightarrow \text{C} \rightarrow \text{O}$ \\
+\hline
+\end{tabular}%
+}
+\end{table}
+
+Hasil ini merupakan manifestasi dari \textbf{Aturan Eksklusi Mutual (\textit{Rule of Mutual Exclusion})}: untuk setiap molekul atau kisi kristal yang memiliki pusat inversi ($i$), mode normal yang memiliki paritas genap (\textit{gerade}, $g$) hanya dapat aktif Raman dan inaktif IR, sedangkan mode dengan paritas ganjil (\textit{ungerade}, $u$) hanya dapat aktif IR dan inaktif Raman. Tidak ada mode fundamental yang dapat aktif simultan pada kedua teknik spektroskopi tersebut.
+
+\subsection{Analisis Teori Grup: Molekul Non-Sentrosimetrik $\text{H}_2\text{O}$}
+Molekul air ($\text{H}_2\text{O}$) memiliki geometri non-linear bersudut dengan grup titik $C_{2v}$. Operasi simetrinya mencakup $\{E, C_2(z), \sigma_v(xz), \sigma_v'(yz)\}$. Karena tidak memiliki pusat inversi ($i \notin C_{2v}$), aturan eksklusi mutual tidak berlaku pada $\text{H}_2\text{O}$.
+
+Derajat kebebasan vibrasi adalah $3(3) - 6 = 3$ mode:
+\begin{enumerate}
+    \item $\nu_1$ (\textit{Symmetric Stretching}, $\sim 3657\text{ cm}^{-1}$): simetri $A_1$. Basis fungsi: $z, x^2, y^2, z^2$. \textbf{Aktif IR dan aktif Raman}.
+    \item $\nu_2$ (\textit{Bending}, $\sim 1595\text{ cm}^{-1}$): simetri $A_1$. Basis fungsi: $z, x^2, y^2, z^2$. \textbf{Aktif IR dan aktif Raman}.
+    \item $\nu_3$ (\textit{Asymmetric Stretching}, $\sim 3756\text{ cm}^{-1}$): simetri $B_2$. Basis fungsi: $y, yz$. \textbf{Aktif IR dan aktif Raman}.
+\end{enumerate}
+Ketiga mode vibrasi normal molekul $\text{H}_2\text{O}$ aktif simultan pada inframerah dan Raman, membuktikan bahwa ketiadaan pusat inversi memungkinkan tumpang tindih aktivitas optik.
+
+\subsection{Aplikasi Teori Grup pada Kisi 2D: Grafena ($D_{6h}$) dan h-BN ($D_{3h}$)}
+Pada kristal grafena monolayer, kisi sarang lebah memiliki grup ruang $P6/mmm$ dengan grup titik faktor $\Gamma$ adalah $D_{6h}$. Sel primitif memuat dua atom karbon sub-kisi A dan B ($N = 2$), menghasilkan 6 cabang dispersi fonon: 3 cabang akustik (LA, TA, ZA) dan 3 cabang optik (LO, TO, ZO).
+
+Pada pusat zona Brillouin ($\Gamma$), representasi tereduksi fonon optik adalah:
+\begin{equation}
+\Gamma_{\text{optik}} = E_{2g} + B_{2g}.
+\label{eq:fonon_grafena}
+\end{equation}
+Berdasarkan tabel karakter $D_{6h}$, representasi $E_{2g}$ bertransformasi seperti komponen kuadratik $(x^2 - y^2, xy)$, sehingga mode ini \textbf{aktif Raman}. Mode $E_{2g}$ pada titik $\Gamma$ ini berkorespondensi dengan pergeseran relatif atom sub-kisi A dan B pada bidang basal grafena, yang memunculkan \textbf{Pita G} pada $\approx 1582\text{ cm}^{-1}$. Sebaliknya, mode $B_{2g}$ adalah getaran optik di luar bidang (\textit{out-of-plane}) yang bersifat optik pasif (\textit{silent mode}, inaktif IR dan inaktif Raman).
+
+Pada kristal h-BN, keteraturan bergantian atom boron dan nitrogen merusak simetri inversi kisi, sehingga grup titik kristal monolayer tereduksi dari $D_{6h}$ menjadi $D_{3h}$. Mode fonon optik pada titik $\Gamma$ bertransformasi sebagai:
+\begin{equation}
+\Gamma_{\text{optik}}^{\text{h-BN}} = E' + A_2''.
+\end{equation}
+Mode $E'$ (berkorespondensi dengan $E_{2g}$ pada bulk/multilayer h-BN) aktif Raman dan aktif IR pada bidang basal, menghasilkan puncak tajam pada $\approx 1367\text{ cm}^{-1}$. Analisis komparatif teori grup ini disajikan pada Tabel \ref{tab:symmetry_comparison}.
+
+\begin{table}[htbp]
+\centering
+\caption{Klasifikasi Teori Grup dan Keaktifan Raman pada Material Acuan.}
+\label{tab:symmetry_comparison}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+\textbf{Sistem Molekul / Kisi} & \textbf{Grup Titik} & \textbf{Pusat Inversi ($i$)} & \textbf{Mode Fonon Raman Aktif} & \textbf{Pita Raman Eksperimental} \\
+\hline
+$\text{CO}_2$ (Gas Linear) & $D_{\infty h}$ & Ada & $\Sigma_g^+$ & $\nu_1$ ($1285, 1388\text{ cm}^{-1}$) \\
+$\text{H}_2\text{O}$ (Molekul Bersudut) & $C_{2v}$ & Tidak Ada & $2A_1 + B_2$ & $\nu_1, \nu_2, \nu_3$ ($1595 - 3756\text{ cm}^{-1}$) \\
+Grafena Monolayer (2D) & $D_{6h}$ & Ada & $E_{2g}$ & Pita G ($\approx 1582\text{ cm}^{-1}$) \\
+h-BN Monolayer / Bulk & $D_{3h} \, / \, D_{6h}$ & Tidak Ada (ML) & $E' \, / \, E_{2g}$ & Pita h-BN ($\approx 1367\text{ cm}^{-1}$) \\
+SWCNT Kiral / Akiral & $C_{N} \, / \, D_{Nh}$ & Bervariasi & $A_{1g} \text{ (RBM)}, E_{1g}, E_{2g}$ & RBM, Pita G$^+$, G$^-$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

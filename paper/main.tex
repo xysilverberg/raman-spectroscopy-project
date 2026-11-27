@@ -1,0 +1,182 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,positioning,shapes}
+\usepackage{booktabs}
+\usepackage[labelfont=bf,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage[round,authoryear]{natbib}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{abstract}
+\usepackage{authblk}
+
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+
+\usepackage[colorlinks=true,
+            linkcolor=black,
+            citecolor=black,
+            urlcolor=black,
+            filecolor=black]{hyperref}
+
+\setstretch{1.0}
+
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+
+\titlespacing*{\section}{0pt}{7pt plus 1pt minus 1pt}{2pt}
+\titlespacing*{\subsection}{0pt}{5pt plus 1pt minus 1pt}{2pt}
+\titlespacing*{\subsubsection}{0pt}{3pt plus 1pt minus 1pt}{1pt}
+
+\setlength{\textfloatsep}{5pt plus 1pt minus 1pt}
+\setlength{\floatsep}{4pt plus 1pt minus 1pt}
+\setlength{\intextsep}{4pt plus 1pt minus 1pt}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{2pt}
+
+\setlength{\abovedisplayskip}{3pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{3pt plus 1pt minus 1pt}
+\setlength{\abovedisplayshortskip}{1pt plus 1pt}
+\setlength{\belowdisplayshortskip}{1pt plus 1pt}
+\setlength{\jot}{1.5pt}
+\setlength{\bibsep}{1.5pt plus 0.5pt}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.5em}{}
+
+% Konfigurasi Daftar Isi: Judul di tengah dan seluruh teks hitam
+\renewcommand{\contentsname}{Daftar Isi}
+\makeatletter
+\renewcommand\tableofcontents{%
+    \clearpage
+    \thispagestyle{plain}
+    \begin{center}%
+        {\Large\bfseries \contentsname\par}%
+    \end{center}%
+    \vspace{0.8em}%
+    \@starttoc{toc}%
+    \clearpage
+}
+\makeatother
+
+\title{\textbf{\Large Spektroskopi Raman: Teori Hamburan, Kaidah Seleksi, Efek Resonansi, dan Instrumentasi Spektrometer}\\[0.2cm]\large Studi Kasus pada Grafena, Carbon Nanotube, dan Heterostruktur Grafena/h-BN}
+
+\author[1]{\textbf{Pradithya Putra Galang Islami}\thanks{NIM: 182241014; Korespondensi: pradithya.putra.galang-2024@fst.unair.ac.id}}
+\author[1]{\textbf{Naufal Lutfian Hakim}\thanks{NIM: 182241015}}
+\author[1]{\textbf{Hendra Maulana}\thanks{NIM: 182241043}}
+\author[1]{\textbf{Drs. Adri Supardi, M.S.}\thanks{Dosen Pembimbing}}
+
+\affil[1]{Departemen Fisika, Fakultas Sains dan Teknologi, Universitas Airlangga, Kampus C Mulyorejo, Surabaya 60115, Indonesia}
+
+\date{\today}
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% HALAMAN COVER (SESUAI DENGAN GAMBAR ACUAN - TEPAT 1 HALAMAN)
+% -----------------------------------------------------------------------------
+\begin{titlepage}
+    \centering
+    \thispagestyle{empty}
+    \vspace*{0.3cm}
+    
+    {\fontsize{13pt}{17pt}\selectfont \textbf{Spektroskopi Raman: Teori Hamburan, Kaidah Seleksi, Efek\\Resonansi, dan Instrumentasi Spektrometer}\par}
+    
+    \vfill
+    
+    \includegraphics[width=5.5cm]{figures/logo-unair.png}
+    
+    \vfill
+    
+    {\normalsize Oleh\par}
+    \vspace{0.4cm}
+    
+    {\normalsize
+    \begin{tabular}{p{5.8cm}l}
+        Pradithya Putra Galang Islami & (182241014) \\
+        Naufal Lutfian Hakim & (182241015) \\
+        Hendra Maulana & (182241043) \\
+    \end{tabular}\par
+    }
+    
+    \vspace{0.8cm}
+    
+    {\normalsize Dosen Pembimbing\par}
+    \vspace{0.15cm}
+    {\normalsize Drs. Adri Supardi, M.S.\par}
+    
+    \vfill
+    
+    {\fontsize{11pt}{15pt}\selectfont
+    \textbf{PROGRAM STUDI SARJANA FISIKA}\\[0.15cm]
+    \textbf{DEPARTEMEN FISIKA}\\[0.15cm]
+    \textbf{FAKULTAS SAINS DAN TEKNOLOGI}\\[0.15cm]
+    \textbf{UNIVERSITAS AIRLANGGA}\\[0.15cm]
+    \textbf{2026}\par}
+    \vspace*{0.3cm}
+\end{titlepage}
+\clearpage
+\thispagestyle{plain}
+
+\begin{center}
+    {\fontsize{12pt}{15pt}\selectfont \textbf{Spektroskopi Raman: Teori Hamburan, Kaidah Seleksi, Efek\\Resonansi, dan Instrumentasi Spektrometer}\par}
+    \vspace{0.2cm}
+    {\normalsize\textbf{Pradithya Putra Galang Islami}$^1$, \textbf{Naufal Lutfian Hakim}$^1$, \textbf{Hendra Maulana}$^1$, \textbf{Drs. Adri Supardi, M.S.}$^1$\par}
+    \vspace{0.1cm}
+    {\footnotesize $^1$Departemen Fisika, Fakultas Sains dan Teknologi, Universitas Airlangga, Surabaya 60115, Indonesia\par}
+\end{center}
+\vspace{0.15cm}
+
+{\setstretch{1.06}\fontsize{9pt}{11.5pt}\selectfont
+\begin{center}
+    \textbf{Abstrak}
+\end{center}
+\vspace{-0.25cm}
+\noindent
+Spektroskopi Raman merupakan teknik diagnostik inelastik foton non-destruktif berdaya pisah tinggi yang menjadi standar emas karakterisasi nanomaterial karbon. Makalah ini menyajikan kajian terpadu yang menjembatani penurunan matematis klasik momen dipol terinduksi, formulasi kuantum elemen matriks operator koordinat osilator harmonik, kaidah seleksi teori grup ($D_{\infty h}$, $C_{2v}$, dan $D_{6h}$), formalisme \textit{Resonance Raman} Kramers--Heisenberg--Dirac (KHD), mekanisme penguatan Franck--Condon dan Herzberg--Teller, hingga arsitektur instrumen spektrometer mikro-Raman konfokal. Jalur komputasi diwujudkan melalui audit integritas data, rantai preprocessing terkontrol (despiking modified Z-score, baseline Asymmetric Least Squares, penapisan Savitzky--Golay), dekonvolusi profil garis spektral non-linear, serta pemodelan fisika maju (\textit{forward physical modeling}) multi-mode. Tiga sistem material berdimensi rendah dianalisis secara kritis: grafena (monolayer, bilayer, dan terdefek), tabung karbon nano berdinding tunggal (SWCNT metalik dan semikonduktor), serta heterostruktur van der Waals grafena/h-BN. Dekonvolusi pita $2D$ membuktikan pemisahan empat subband elektronik pada grafena bilayer ($R^2 = 0.9981$), kehadiran asimetri Breit--Wigner--Fano (BWF) dengan $1/q = -0.22$ pada pita $G^-$ SWCNT metalik akibat kopling fonon-plasmon, serta isolasi tegas mode $E_{2g}$ kristal h-BN ($1366.8\text{ cm}^{-1}$) yang disertai penyempitan rekor FWHM pita $2D$ grafena menjadi $17.5\text{ cm}^{-1}$ pada heterostruktur grafena/h-BN. Model fisika maju yang diturunkan dari konstanta pegas analitik ($k_{\mathrm{C=C}} = 885.5\text{ N/m}$) menghasilkan kesesuaian sangat tinggi terhadap data eksperimen dengan koefisien determinasi $R^2 \ge 0.985$, korelasi Pearson $r > 0.99$, dan deviasi frekuensi puncak $\Delta\tilde{\nu} \le 0.8\text{ cm}^{-1}$ di seluruh sampel, mengonfirmasi validitas kerangka teoritis dan metodologi komputasi yang diajukan.
+
+\vspace{0.15cm}
+\noindent \textbf{Kata Kunci:} Spektroskopi Raman, Grafena, Carbon Nanotube, Heterostruktur Grafena/h-BN, Formalisme KHD, Teori Grup, Resonansi Ganda, Dekonvolusi Spektral.
+
+\vspace{0.25cm}
+
+\begin{center}
+    \textbf{Abstract}
+\end{center}
+\vspace{-0.25cm}
+\noindent
+Raman spectroscopy is a premier non-destructive inelastic light scattering technique that serves as the benchmark for characterizing low-dimensional carbon nanomaterials. This work presents an integrated framework bridging classical induced dipole derivations, quantum mechanical harmonic oscillator transition matrix elements, group theoretical selection rules ($D_{\infty h}$, $C_{2v}$, and $D_{6h}$), the Kramers--Heisenberg--Dirac (KHD) resonance Raman formalism, Franck--Condon and Herzberg--Teller vibronic couplings, and confocal micro-Raman spectrometer instrumentation. The computational pipeline incorporates cryptographic data auditing, controlled preprocessing (modified Z-score despiking, Asymmetric Least Squares baseline correction, Savitzky--Golay denoising), non-linear spectral deconvolution, and multi-mode forward physical modeling. Three fundamental nanosystems are systematically evaluated: graphene (pristine monolayer, bilayer, and defective), single-walled carbon nanotubes (metallic and semiconducting SWCNTs), and graphene/h-BN van der Waals heterostructures. Deconvolution analysis uncovers the characteristic four-component Lorentzian split of the bilayer graphene $2D$ band ($R^2 = 0.9981$), the Breit--Wigner--Fano (BWF) asymmetric line shape ($1/q = -0.22$) of the metallic SWCNT $G^-$ band originating from discrete phonon-plasmon continuum coupling, and the rigorous isolation of the substrate h-BN $E_{2g}$ phonon mode ($1366.8\text{ cm}^{-1}$) along with an extraordinary narrowing of the graphene $2D$ band (FWHM $= 17.5\text{ cm}^{-1}$) due to the suppression of charge puddles. The forward physical model, derived from analytical spring constants ($k_{\mathrm{C=C}} = 885.5\text{ N/m}$), demonstrates outstanding agreement with experimental spectra, yielding $R^2 \ge 0.985$, Pearson $r > 0.99$, and peak frequency residuals $\Delta\tilde{\nu} \le 0.8\text{ cm}^{-1}$ across all samples, firmly substantiating the theoretical and computational methodology.
+
+\vspace{0.15cm}
+\noindent \textbf{Keywords:} Raman Spectroscopy, Graphene, Carbon Nanotubes, Graphene/h-BN Heterostructures, KHD Formalism, Group Theory, Double Resonance, Spectral Deconvolution.
+\par}
+
+\clearpage
+\tableofcontents
+\clearpage
+
+\input{sections/01_pendahuluan.tex}
+\input{sections/02_dasar_raman.tex}
+\input{sections/03_kaidah_seleksi.tex}
+\input{sections/04_resonance_raman.tex}
+\input{sections/05_instrumentasi.tex}
+\input{sections/06_analisis_simulasi.tex}
+\input{sections/07_kesimpulan.tex}
+
+\vspace{0.8cm}
+\renewcommand{\refname}{Daftar Pustaka}
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

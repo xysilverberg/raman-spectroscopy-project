@@ -1,47 +1,45 @@
-# LaTeX build & auxiliary files
-*.aux
-*.bbl
-*.bcf
-*.blg
-*.fdb_latexmk
-*.fls
-*.idx
-*.ilg
-*.ind
-*.lof
-*.log
-*.lot
-*.nav
-*.out
-*.run.xml
-*.snm
-*.synctex.gz
-*.toc
-*.xdv
-paper/latex/main.pdf
-
-# Microsoft Word / Office temporary & lock files
-~$*.docx
-~$*.doc
-~$*.pptx
-*.tmp
-
-# Python environments, cache & build artifacts
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-.venv/
-venv/
+*.so
+.Python
 env/
+venv/
+.venv/
+ENV/
 .ipynb_checkpoints/
-.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# LaTeX build auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml
+*.lot
+*.lof
+
+# Explicitly keep compiled main PDF
+!paper/main.pdf
 
 # OS & Editor files
 .DS_Store
 Thumbs.db
 desktop.ini
-*.swp
-*.swo
-*~
 .vscode/
 .idea/
+
+# Temporary rendered files
+*rendered*.png

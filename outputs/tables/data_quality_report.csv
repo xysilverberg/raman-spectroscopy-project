@@ -1,0 +1,8 @@
+file_name,sample,sha256_verified,num_points,wn_min_cm1,wn_max_cm1,step_cm1,monotonic,nan_count,inf_count,intensity_min,intensity_max,status
+graphene_pristine_532nm.csv,Pristine Single-Layer Graphene (SLG),True,3101,100.0,3200.0,1.0,True,0,0,127.24,9137.41,PASS
+graphene_bilayer_532nm.csv,Bernal AB-Stacked Bilayer Graphene (BLG),True,3101,100.0,3200.0,1.0,True,0,0,134.74,4723.6,PASS
+graphene_defective_532nm.csv,Defective Monolayer Graphene (Ion-Bombarded),True,3101,100.0,3200.0,1.0,True,0,0,150.2,4591.49,PASS
+cnt_swcnt_metallic_532nm.csv,Metallic Single-Walled Carbon Nanotube (Armchair),True,3101,100.0,3200.0,1.0,True,0,0,214.86,4775.93,PASS
+cnt_swcnt_semiconducting_532nm.csv,Semiconducting SWCNT (Chiral),True,3101,100.0,3200.0,1.0,True,0,0,96.5,4253.06,PASS
+graphene_hbn_heterostructure_532nm.csv,Graphene/h-BN van der Waals Heterostructure,True,3101,100.0,3200.0,1.0,True,0,0,117.94,10188.88,PASS
+hbn_pure_flake_532nm.csv,Hexagonal Boron Nitride Multi-layer Flake,True,3101,100.0,3200.0,1.0,True,0,0,96.82,2529.24,PASS

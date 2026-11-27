@@ -1,0 +1,69 @@
+\begin{tikzpicture}[>=stealth, font=\small,
+    comp/.style={draw, thick, rounded corners=3pt, align=center, fill=blue!6, text width=2.0cm, minimum height=0.95cm, inner sep=2pt},
+    opt/.style={draw, thick, rounded corners=2pt, align=center, fill=yellow!18, text width=2.0cm, minimum height=0.90cm, inner sep=2pt},
+    laser_beam/.style={->, line width=1.5pt, red!85!black},
+    raman_beam/.style={->, line width=1.5pt, orange!90!black},
+    signal_line/.style={->, thick, dashed, blue!75!black}
+]
+    
+    % -------------------------------------------------------------------------
+    % BARIS ATAS: DETEKSI & SPEKTROGRAF (y = 2.6)
+    % -------------------------------------------------------------------------
+    \node[comp, fill=blue!12, draw=blue!70!black] (pc) at (0.0, 2.6) {\textbf{Sistem PC}\\ \scriptsize Akuisisi \& Analisis};
+    \node[comp, fill=cyan!15, draw=cyan!70!black] (ccd) at (3.5, 2.6) {\textbf{Detektor CCD}\\ \scriptsize Peltier $-70^\circ\text{C}$};
+    \node[comp, fill=orange!15, draw=orange!70!black] (grating) at (7.0, 2.6) {\textbf{Kisi Difraksi}\\ \scriptsize $1800\text{ gr/mm}$ ($f=800\text{ mm}$)};
+    \node[opt, fill=gray!15, draw=gray!60!black] (pinhole) at (10.5, 2.6) {\textbf{Celah Pinhole}\\ \scriptsize Konfokal $50\text{--}100\,\mu\text{m}$};
+    \node[opt, fill=purple!18, draw=purple!70!black] (edge) at (14.0, 2.6) {\textbf{Edge Filter}\\ \scriptsize OD $>6$ @ $532\text{ nm}$};
+
+    % -------------------------------------------------------------------------
+    % BARIS BAWAH: SUMBER EKSITASI & KETERANGAN (y = 0.0)
+    % -------------------------------------------------------------------------
+    % Legenda di pojok kiri bawah (x = 0.0, y = 0.0)
+    \node[draw, rounded corners=2pt, fill=white, draw=gray!40, font=\scriptsize, align=left, inner sep=4pt] (legend) at (0.0, 0.0) {
+        \textbf{Keterangan Berkas:}\\[2pt]
+        {\color{red!85!black}\rule{0.35cm}{1.4pt}} Berkas Eksitasi ($532\,\text{nm}$)\\[1pt]
+        {\color{orange!90!black}\rule{0.35cm}{1.4pt}} Hamburan Raman\\[1pt]
+        {\color{blue!75!black}\rule{0.35cm}{1.2pt}} Sinyal Digital ADC/USB
+    };
+
+    \node[comp, fill=red!12, draw=red!70!black] (laser) at (3.5, 0.0) {\textbf{Laser DPSS}\\ \scriptsize $\lambda_0 = 532.0\text{ nm}$ (CW)};
+    \node[opt] (atten) at (7.0, 0.0) {\textbf{Filter ND}\\ \scriptsize Attenuator Daya};
+    \node[opt] (filter_clean) at (10.5, 0.0) {\textbf{Laser Clean-up}\\ \scriptsize Bandpass $532\text{ nm}$};
+
+    % Dichroic Beam Splitter di (14.0, 0.0)
+    \draw[thick, draw=cyan!80!black, fill=cyan!30, rotate around={45:(14.0,0.0)}] (13.4,-0.08) rectangle (14.6,0.08);
+    \node[right=0.25cm, font=\scriptsize\bfseries, text=cyan!80!black, align=left] at (14.15, 0.0) {Dichroic\\Beam Splitter};
+
+    % -------------------------------------------------------------------------
+    % KOLOM VERTIKAL: MIKROSKOP & SAMPEL (x = 14.0, y < 0)
+    % -------------------------------------------------------------------------
+    \node[opt, fill=green!18, draw=green!60!black] (obj) at (14.0, -1.75) {\textbf{Objektif 100x}\\ \scriptsize $\text{NA} = 0.90$};
+    \node[comp, fill=gray!20, draw=gray!70!black, text width=2.4cm] (sample) at (14.0, -3.75) {\textbf{Sampel Nanomaterial}\\ \scriptsize Grafena / SWCNT / h-BN};
+
+    % -------------------------------------------------------------------------
+    % JALUR BERKAS EKSITASI (MERAH)
+    % -------------------------------------------------------------------------
+    \draw[laser_beam] (laser.east) -- (atten.west);
+    \draw[laser_beam] (atten.east) -- (filter_clean.west);
+    \draw[laser_beam] (filter_clean.east) -- (13.85, 0.0);
+    \draw[laser_beam] (14.0, -0.15) -- (obj.north) node[midway, right=1pt, font=\tiny, text=red!80!black] {Eksitasi};
+    \draw[laser_beam] (obj.south) -- (sample.north) node[midway, right=1pt, font=\tiny, text=red!80!black] {$d_{\text{spot}} \approx 0.72\,\mu\text{m}$};
+
+    % -------------------------------------------------------------------------
+    % JALUR HAMBURAN RAMAN (ORANYE)
+    % -------------------------------------------------------------------------
+    % Dari sampel kembali ke objektif dan menembus dichroic (digeser sedikit ke kiri)
+    \draw[raman_beam] ([xshift=-3pt]sample.north) -- ([xshift=-3pt]obj.south);
+    \draw[raman_beam] ([xshift=-3pt]obj.north) -- ([xshift=-3pt]14.0, -0.15);
+    \draw[raman_beam] ([xshift=-3pt]14.0, 0.15) -- ([xshift=-3pt]edge.south)
+        node[midway, left=1pt, font=\tiny, text=orange!90!black, align=right] {Rayleigh +\\Raman};
+
+    % Jalur dari Edge Filter ke kisi dan detektor
+    \draw[raman_beam] (edge.west) -- (pinhole.east) node[midway, above=1pt, font=\tiny, text=purple!90!black] {Stokes};
+    \draw[raman_beam] (pinhole.west) -- (grating.east) node[midway, above=1pt, font=\tiny, text=gray!80!black] {Konfokal};
+    \draw[raman_beam] (grating.west) -- (ccd.east) node[midway, above=1pt, font=\tiny, text=orange!90!black] {Terdispersi};
+
+    % Sinyal digital dari CCD ke PC
+    \draw[signal_line] (ccd.west) -- (pc.east) node[midway, above=1pt, font=\tiny, text=blue!80!black] {Data ADC};
+
+\end{tikzpicture}
